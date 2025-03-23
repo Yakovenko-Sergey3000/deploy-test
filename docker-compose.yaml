@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  server:
+    build:
+      context: "."
+      dockerfile: Dockerfile
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    ports:
+      - "443:443"
+    depends_on:
+      - server
+    restart: always
